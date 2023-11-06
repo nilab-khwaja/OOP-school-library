@@ -13,7 +13,6 @@ class Student < Person
   end
 end
 
-
 student = Student.new(15, 'B', 'Akasha')
 puts student.name
 puts student.age
