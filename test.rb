@@ -1,36 +1,43 @@
+require_relative 'book'
 require_relative 'person'
+require_relative 'rental'
+require_relative 'classroom'
 require_relative 'student'
-require_relative 'teacher'
-require_relative 'capitalize_decorator'
-require_relative 'trimmer_decorator'
+# Create people
+person1 = Person.new(25, 'John')
+person2 = Person.new(15, 'Emily')
 
-person1 = Person.new(25, 'Nilab')
-puts "ID: #{person1.id}"
-puts "Name: #{person1.name}"
-puts "Age: #{person1.age}"
-puts person1.can_use_services? ? 'Can use services' : 'Cannot use services'
+# Create books
+book1 = Book.new('Book Title 1', 'Author 1')
+book2 = Book.new('Book Title 2', 'Author 2')
 
-person2 = Person.new(15, 'Ahmad', parent_permission: false)
-puts "ID: #{person2.id}"
-puts "Name: #{person2.name}"
-puts "Age: #{person2.age}"
-puts person2.can_use_services? ? 'Can use services' : 'Cannot use services'
+# Rent books to people
+book1.add_rental(person1, '2023-11-08')
+book2.add_rental(person1, '2023-11-09')
+book2.add_rental(person2, '2023-11-10')
 
-teacher = Teacher.new(33, 'math', 'aziz')
-puts teacher.specialization
-puts teacher.name
-puts teacher.age
-puts teacher.can_use_services
+# Check rentals for a person
+puts "Rentals for #{person1.name}:"
+person1.rentals.each do |rental|
+  puts "Book Title: #{rental.book.title}, Rental Date: #{rental.date}"
+end
 
-student = Student.new(15, 'B', 'Akasha')
-puts student.name
-puts student.age
-puts student.classroom
-puts student.play_hooky
+# Check rentals for a book
+puts "Rentals for #{book2.title}:"
+book2.rentals.each do |rental|
+  puts "Rented by: #{rental.person.name}, Rental Date: #{rental.date}"
+end
 
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+classroom = Classroom.new('class A')
+stu1 = Student.new(16, 'Alice')
+stu2 = Student.new(23, 'Najm')
+stu3 = Student.new(17, 'Jasmine')
+
+stu1.assign_to_classroom(classroom)
+stu2.assign_to_classroom(classroom)
+stu3.assign_to_classroom(classroom)
+
+puts "Student in #{classroom.label}:"
+classroom.students.each do |student|
+  puts "student Name : #{student.name}, Age: #{student.age}"
+end
