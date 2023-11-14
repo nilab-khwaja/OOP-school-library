@@ -30,7 +30,9 @@
 # 📖 [OOP School Library] <a name="about-project"></a>
 
 [OOP School Library] This software application has been created as an object-oriented programming (OOP) system tailored specifically for school libraries. Its design prioritizes the precise management of the library's array of educational resources and the systematic tracking of borrowers. The overarching objective is to elevate the operational efficiency of the school library, augment the experience of its users, and ensure the continuous availability of educational materials for both students and educators.
+
 ## 🛠 Built With <a name="built-with"></a>
+
 - Ruby
 
 <!-- Features -->
@@ -50,6 +52,7 @@
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
+
 - Laptop
 - Github
 - Git
@@ -59,6 +62,7 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need:
+
 - To install Ruby following these steps:
 - Install the latest version on ruby+devkit [rubyinstaller](https://rubyinstaller.org/downloads/)
 - Follow the installation steps [here](https://stackify.com/install-ruby-on-windows-everything-you-need-to-get-going/)
@@ -69,27 +73,32 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 sh
-  cd my-folder
-  git clone https://github.com/nilab-khwaja/OOP-school-library.git
+cd my-folder
+git clone https://github.com/nilab-khwaja/OOP-school-library.git
 
 ### Install
 
 Install this project with:
 
 sh
-  cd my-project
-  bundle install
+cd my-project
+bundle install
 
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
-
- 👤 **Nilab Khwajazada**
+👤 **Nilab Khwajazada**
 
 - GitHub: [@nilab-khwaja](https://github.com/nilab-khwaja)
 - Twitter: [@nilab](https://x.com/NilabKhwajazada?t=hEkqy2CCNFOIfGtbmD2gLA&s=35)
 - LinkedIn: [@nilab-khwajazada](https://www.linkedin.com/in/nilab-khwajazada)
+
+👤 **Afimia Fidelis**
+
+- GitHub: [@Afimia Fidelis](https://github.com/Izebiafe)
+- Twitter: [@Afimia Fidelis](https://x.com/Izebiafe)
+- LinkedIn: [@Afimia Fidelis](https://www.linkedin.com/in/Izebiafe)
 
 <!-- FUTURE FEATURES -->
 
@@ -113,7 +122,6 @@ Feel free to check the [issues page](https://github.com/nilab-khwaja/OOP-school-
 
 ## ⭐️ Show your support <a name="support"></a>
 
-
 If you like this project give me a ⭐️.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -126,9 +134,7 @@ I would like to thank the Microverse Team.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- LICENSE -->
-
 
 ## 📝 License <a name="license"></a>
 
