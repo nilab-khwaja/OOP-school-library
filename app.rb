@@ -43,15 +43,14 @@ class App
   end
 
   include AppFunctions
+
   def list_all_rentals
     print 'ID of person: '
-    id = gets.chomp.to_s
+    id = gets.chomp.to_i
     puts 'Rental: '
-
     rentals_found = false
-
     @rentals.each do |rental|
-      if rental.person.is_a?(Person) && rental.person.id == id
+      if rental.person.is_a?(Person) && rental.person.id.to_i == id
         puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
         rentals_found = true
       end
