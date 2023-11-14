@@ -5,12 +5,13 @@ def main
   puts 'Welcome to School Library App!'
   puts '------------------------------'
   app = App.new
+  app.load_data
   loop do
     app.display_menu
     option = gets.chomp.to_i
     if option == 7
+      puts 'Thanks for using this app ...'
       app.save_data
-      'Data saved. Existing...'
       break
     else
       app.choose_option(option)
