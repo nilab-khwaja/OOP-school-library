@@ -9,7 +9,8 @@ def main
     app.display_menu
     option = gets.chomp.to_i
     if option == 7
-      puts 'Thank you for using this app!'
+      app.save_data
+      'Data saved. Existing...'
       break
     else
       app.choose_option(option)

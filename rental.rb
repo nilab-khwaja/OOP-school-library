@@ -7,4 +7,8 @@ class Rental
     @book = book
     @person = person
   end
+
+  def to_json
+    {'date' => date, 'book' => book.to_json, 'person' => person.to_json}.to_json
+  end
 end

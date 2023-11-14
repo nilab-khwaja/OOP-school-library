@@ -25,6 +25,10 @@ class Person < Nameable
     @rentals << rental
   end
 
+  def to_json
+    {'id' => id, 'name' => name, 'age' => age}.to_json
+  end
+
   private
 
   def of_age?
