@@ -13,6 +13,6 @@ class Teacher < Person
   end
 
   def to_json
-    {'id' => id, 'name' => name, 'age' => age, 'specialization' => specialization}.to_json
+    { 'id' => id, 'name' => name, 'age' => age, 'specialization' => specialization }.to_json
   end
 end

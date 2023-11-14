@@ -7,6 +7,7 @@ class Rental
     @book = book
     @person = person
   end
+
   def to_json(*_args)
     {
       date: @date,

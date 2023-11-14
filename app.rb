@@ -1,14 +1,15 @@
+require 'json'
+require 'date'
 require_relative 'book'
 require_relative 'person'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'rental'
 require_relative 'app_function'
-require 'json'
-require 'date'
 
 class App
   attr_accessor :people, :book, :rentals
+
   def initialize
     @people = []
     @books = []
@@ -23,7 +24,7 @@ class App
     puts '4 - Add a book'
     puts '5 - Add a rental'
     puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
+    puts '7 - Save and Exit'
   end
 
   def choose_option(option)
@@ -45,7 +46,9 @@ class App
     end
   end
 
+
   include AppFunctions
+
 
   def list_all_rentals
     print 'ID of person: '
@@ -98,10 +101,8 @@ class App
   def load_people
     if File.exist?('people.json')
       data = JSON.parse(File.read('people.json'))
-
       @people = data.map do |person_data|
         puts "Loading person data: #{person_data.inspect}"
-
         if person_data['class'] == 'Student'
           Student.new(person_data['age'], person_data['parent_permission'], person_data['name'])
         elsif person_data['class'] == 'Teacher'
@@ -128,7 +129,8 @@ class App
         person_data = rental_data['person']
 
         book = @books.find { |b| b.title == book_data['title'] && b.author == book_data['author'] }
-        person = @people.find { |p| p.id == person_data['id'] }
+        person_id = person_data['id'].to_i # Ensure that the ID is converted to an integer
+        person = @people.find { |p| p.id == person_id }
 
         if person
           rental = Rental.new(Date.parse(rental_data['date']), book, person)
@@ -137,10 +139,9 @@ class App
           rental
         else
           puts "Invalid rental data (person not found): #{rental_data.inspect}"
-          nil  # Ignore invalid data
+          nil # Ignore invalid data
         end
-      end.compact  # Remove nil entries
+      end.compact # Remove nil entries
     end
   end
-
 end
