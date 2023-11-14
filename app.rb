@@ -114,26 +114,43 @@ class App
     return unless File.exist?('rentals.json')
 
     data = JSON.parse(File.read('rentals.json'))
+    @rentals = data.map { |rental_data| load_rental(rental_data) }.compact
+  end
 
-    @rentals = data.map do |rental_data|
-      puts "Loading rental data: #{rental_data.inspect}"
+  def load_rental(rental_data)
+    puts "Loading rental data: #{rental_data.inspect}"
 
-      book_data = rental_data['book']
-      person_data = rental_data['person']
+    book_data = rental_data['book']
+    person_data = rental_data['person']
 
-      book = @books.find { |b| b.title == book_data['title'] && b.author == book_data['author'] }
-      person_id = person_data['id'].to_i # Ensure that the ID is converted to an integer
-      person = @people.find { |p| p.id == person_id }
+    book = find_book(book_data)
+    person = find_person(person_data)
 
-      if person
-        rental = Rental.new(Date.parse(rental_data['date']), book, person)
-        person.rentals ||= []
-        person.rentals << rental
-        rental
-      else
-        puts "Invalid rental data (person not found): #{rental_data.inspect}"
-        nil # Ignore invalid data
-      end
-    end.compact # Remove nil entries
+    if person
+      create_rental(rental_data, book, person)
+    else
+      handle_invalid_rental(rental_data)
+    end
+  end
+
+  def find_book(book_data)
+    @books.find { |b| b.title == book_data['title'] && b.author == book_data['author'] }
+  end
+
+  def find_person(person_data)
+    person_id = person_data['id'].to_i
+    @people.find { |p| p.id == person_id }
+  end
+
+  def create_rental(rental_data, book, person)
+    rental = Rental.new(Date.parse(rental_data['date']), book, person)
+    person.rentals ||= []
+    person.rentals << rental
+    rental
+  end
+
+  def handle_invalid_rental(rental_data)
+    puts "Invalid rental data (person not found): #{rental_data.inspect}"
+    nil
   end
 end
