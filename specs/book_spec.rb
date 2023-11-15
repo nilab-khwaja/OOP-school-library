@@ -15,5 +15,4 @@ describe Book do
       expect(person).to have_received(:add_rental).with(an_instance_of(Rental))
     end
   end
-
 end

@@ -6,13 +6,13 @@ require 'json'
 describe Rental do
   let(:book) { Book.new("Title", "Author") }
   let(:person) { Person.new(25, "John Doe") }
-  let(:date) { Date.new(2023, 11, 15) }  
-  subject(:rental) { described_class.new(date, book, person) }  
+  let(:date) { Date.new(2023, 11, 15) }
+  subject(:rental) { described_class.new(date, book, person) }
   it 'has a date, book, and person' do
     expect(rental.date).to eq(date)
     expect(rental.book).to eq(book)
     expect(rental.person).to eq(person)
-  end  
+  end
   it 'converts to JSON format' do
     json_result = rental.to_json
     expected_json = {
@@ -27,7 +27,7 @@ describe Rental do
         age: person.age,
         class: person.class.to_s
       }
-    }.to_json    
+    }.to_json
     expect(json_result).to eq(expected_json)
   end
 end
