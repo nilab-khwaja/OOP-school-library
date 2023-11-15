@@ -43,7 +43,7 @@ describe Person do
   describe '#to_json' do
     it 'returns a JSON representation of the person' do
       person = Person.new(22, 'Bob')
-      json_result = '{"id":' + person.id.to_s + ',"name":"Bob","age":22,"class":"Person"}'
+      json_result = "{\"id\":#{person.id},\"name\":\"Bob\",\"age\":#{person.age},\"class\":\"Person\"}"
 
       result = person.to_json
 
