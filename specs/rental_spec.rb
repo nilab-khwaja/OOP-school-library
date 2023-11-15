@@ -4,8 +4,8 @@ require_relative '../book'
 require_relative '../person'
 require 'json'
 describe Rental do
-  let(:book) { Book.new("Title", "Author") }
-  let(:person) { Person.new(25, "John Doe") }
+  let(:book) { Book.new('Title', 'Author') }
+  let(:person) { Person.new(25, 'John Doe') }
   let(:date) { Date.new(2023, 11, 15) }
   subject(:rental) { described_class.new(date, book, person) }
   it 'has a date, book, and person' do
